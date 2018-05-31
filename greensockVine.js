@@ -9,32 +9,9 @@ var vineList = [];
 var starCount = 0;
 var dotCount = 0;
 
-// var star = `<?xml version="1.0" encoding="UTF-8"?>
-// <svg width="185px" height="176px" viewBox="0 0 185 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-//     <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
-//     <title>Star</title>
-//     <desc>Created with Sketch.</desc>
-//     <defs></defs>
-//     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-//         <polygon id="Star" stroke="#343313" stroke-width="3" fill="#FAE736" points="92.5 144.25 37.5420789 173.143089 48.0381079 111.946544 3.57621573 68.606911 65.0210395 59.6784555 92.5 4 119.978961 59.6784555 181.423784 68.606911 136.961892 111.946544 147.457921 173.143089"></polygon>
-//     </g>
-// </svg>`;
 
-
-
-// function draw() {
-//     // var canvas = document.getElementById("canvas");
-//     // var ctx = canvas.getContext("2d");
-    
-//     var t1 = new TimelineLite();
-
-//     //t1.reverse();
-//     t1.from("#vine0", 2, {drawSVG:"0%"}, 0.1);
-
-//     //TweenLite.fromTo("#vine", 2, {drawSVG:"0%"}, {drawSVG:"10% 0%", delay:0.5});
-// }
 var t1 = new TimelineLite();
-insertSegment = function() {
+function insertSegment() {
     var vineSVGString = `<?xml version="1.0" encoding="UTF-8"?>
 <svg class="vine" width="153px" height="497px" viewBox="0 0 153 497" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
@@ -73,7 +50,6 @@ var myPathString = "M30.1289063,496.585937 C30.2886207,462.652873 38.2821103,442
 var points = extractPoints(myPathString);
 
 var checkProgressTime = setInterval(function() {
-    // console.log(t1.progress());
     if (t1.progress() >= 1) clearInterval(checkProgressTime);
 
     if ((lastUpdatedPt * 100 / numOfPoints) < t1.progress() * 100) {
@@ -211,22 +187,5 @@ function extractPoints(pathString) {
         point.y = calcPoint.y;
         arrayPath.push(point);
     }
-
-
-    // function setUpPoint(segment) {
-    //     for (var i = 0; i < segment.length; i+=2) {
-    //         var point = {};
-    //         point.x = segment[i];
-    //         point.y = segment[i+1];
-    //         arrayPath.push(point);
-    //     }
-    // }
-
-    // for (var i = 0; i < newPath.length; i++) {
-    //     var segment = newPath[i], point;
-    //     segment.shift();
-    //     point = setUpPoint(segment);
-    // }
-
     return arrayPath;
 }
